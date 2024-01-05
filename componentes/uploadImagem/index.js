@@ -1,20 +1,27 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 export function UploadImagem({
     className = '',
     setImagem,
     imagemPreview,
-    imagemPreviewClassName = ''
+    imagemPreviewClassName = '',
+    aoSetarAReferencia
 }) {
     const referenciaInput = useRef(null);
+
+    useEffect(() => {
+        if (!aoSetarAReferencia) {
+            return;
+        }
+
+        aoSetarAReferencia(referenciaInput?.current);
+    }, [referenciaInput?.current]);
 
     const abrirSeletorArquivos = () => {
         referenciaInput?.current?.click();
     }
 
     const aoAlterarImagem = () => {
-        console.log('aoAlterarImagem')
-
         if (!referenciaInput?.current?.files?.length) {
             return;
         }
@@ -28,12 +35,10 @@ export function UploadImagem({
                 arquivo
             });
         }
-
     }
 
     return (
         <div className={`uploadImagemContainer ${className}`} onClick={abrirSeletorArquivos}>
-            <button>abrir seletor de arquivos</button>
             {imagemPreview && (
                 <div className="imagemPreviewConatiner">
                     <img
