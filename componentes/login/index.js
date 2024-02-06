@@ -1,11 +1,25 @@
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import InputPublico from "../inputPublico";
+import Botao from "../botao";
 
 import imagemEnvelope from "../../public/images/envelope.svg";
+import imagemChave from "../../public/images/chave.svg";
+import imagemLogo from "../../public/images/logo.svg";
 
 export default function Login() {
+    const [email, setEmail] = useState("");
+    const [senha, setSenha] = useState("");
+
     return (
         <section className={`paginaLogin paginaPublica`}>
             <div className="logoContainer">
+                <Image
+                    src={imagemLogo}
+                    alt="logotipo"
+                    layout="fill"
+                />
             </div>
 
             <div className="conteudoPaginaPublica">
@@ -14,9 +28,29 @@ export default function Login() {
                         imagem={imagemEnvelope}
                         texto="E-mail"
                         tipo="email"
-                        aoAlterarValor={() => console.log('digitando e-mail')}
+                        aoAlterarValor={e => setEmail(e.target.value)}
+                        valor={email}
+                    />
+
+                    <InputPublico
+                        imagem={imagemChave}
+                        texto="Senha"
+                        tipo="password"
+                        aoAlterarValor={e => setSenha(e.target.value)}
+                        valor={senha}
+                    />
+
+                    <Botao
+                        texto="Login"
+                        tipo="submit"
+                        desabilitado={false}
                     />
                 </form>
+
+                <div className="rodapePaginaPublica">
+                    <p>Não possui uma conta?</p>
+                    <Link href="/cadastro">Faça seu cadastro agora</Link>
+                </div>
             </div>
         </section>
     );
