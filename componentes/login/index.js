@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import InputPublico from "../inputPublico";
 import Botao from "../botao";
+import { validarEmail, validarSenha } from "@/utils/validadores";
 
 import imagemEnvelope from "../../public/images/envelope.svg";
 import imagemChave from "../../public/images/chave.svg";
@@ -31,6 +32,8 @@ export default function Login() {
                         tipo="email"
                         aoAlterarValor={e => setEmail(e.target.value)}
                         valor={email}
+                        mensagemValidacao="O endereço informado é inválido."
+                        exibirMensagemValidacao={email && !validarEmail(email)}
                     />
 
                     <InputPublico
@@ -39,6 +42,8 @@ export default function Login() {
                         tipo="password"
                         aoAlterarValor={e => setSenha(e.target.value)}
                         valor={senha}
+                        mensagemValidacao="A senha precisa ter ao menos 4 caracteres."
+                        exibirMensagemValidacao={senha && !validarSenha(senha)}
                     />
 
                     <Botao
