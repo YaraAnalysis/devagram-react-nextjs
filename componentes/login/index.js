@@ -13,6 +13,13 @@ export default function Login() {
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
 
+    const validarFormulario = () => {
+        return (
+            validarEmail(email)
+            && validarSenha(senha)
+        );
+    }
+
     return (
         <section className={`paginaLogin paginaPublica`}>
             <div className="logoContainer">
@@ -42,14 +49,14 @@ export default function Login() {
                         tipo="password"
                         aoAlterarValor={e => setSenha(e.target.value)}
                         valor={senha}
-                        mensagemValidacao="A senha precisa ter ao menos 4 caracteres."
+                        mensagemValidacao="A senha precisa ter pelo menos 4 caracteres."
                         exibirMensagemValidacao={senha && !validarSenha(senha)}
                     />
 
                     <Botao
                         texto="Login"
                         tipo="submit"
-                        desabilitado={false}
+                        desabilitado={!validarFormulario()}
                     />
                 </form>
 
