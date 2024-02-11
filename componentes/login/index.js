@@ -4,20 +4,48 @@ import Link from "next/link";
 import InputPublico from "../inputPublico";
 import Botao from "../botao";
 import { validarEmail, validarSenha } from "@/utils/validadores";
+import UsuarioService from "@/services/UsuarioService";
 
 import imagemEnvelope from "../../public/images/envelope.svg";
 import imagemChave from "../../public/images/chave.svg";
 import imagemLogo from "../../public/images/logo.svg";
 
+const usuarioService = new UsuarioService();
+
 export default function Login() {
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
+    const [estaSubmetendo, setEstaSubmetendo] = useState(false);
 
     const validarFormulario = () => {
         return (
             validarEmail(email)
             && validarSenha(senha)
         );
+    }
+
+    const aoSubmeter = async (e) => {
+        e.preventDefault();
+        if (!validarFormulario()) {
+            return;
+        }
+
+        setEstaSubmetendo(true);
+
+        try {
+            await usuarioService.login({
+                login: email,
+                senha
+            });
+
+            //TODO: redirecionar o usuário para home
+        } catch (error) {
+            alert(
+                "Erro ao realizar o login. " + error?.response?.data?.erro
+            )
+        }
+
+        setEstaSubmetendo(false);
     }
 
     return (
@@ -56,7 +84,7 @@ export default function Login() {
                     <Botao
                         texto="Login"
                         tipo="submit"
-                        desabilitado={!validarFormulario()}
+                        desabilitado={!validarFormulario() || estaSubmetendo}
                     />
                 </form>
 
