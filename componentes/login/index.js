@@ -60,7 +60,7 @@ export default function Login() {
             </div>
 
             <div className="conteudoPaginaPublica">
-                <form>
+                <form onSubmit={aoSubmeter}>
                     <InputPublico
                         imagem={imagemEnvelope}
                         texto="E-mail"
