@@ -12,6 +12,7 @@ import imagemUsuarioAtivo from "../../public/images/usuarioAtivo.svg"
 import imagemEnvelope from "../../public/images/envelope.svg";
 import imagemChave from "../../public/images/chave.svg";
 import imagemAvatar from "../../public/images/avatar.svg";
+import { useRouter } from "next/router";
 
 const usuarioService = new UsuarioService();
 
@@ -22,6 +23,7 @@ export default function Cadastro(){
     const [senha, setSenha] = useState("");
     const [confirmacaoSenha, setConfirmacaoSenha] = useState("");
     const [estaSubmetendo, setEstaSubmetendo] = useState(false);
+    const router = useRouter();
 
     const validarFormulario = () => {
         return (
@@ -51,8 +53,13 @@ export default function Cadastro(){
             }
 
             await usuarioService.cadastro(corpoReqCadastro);
-            alert("Sucesso");
-            // Todo: autenticar o usuario diretamente após o cadastro
+            await usuarioService.login({
+                login: email,
+                senha
+            });
+
+            // autentica o usuario diretamente após o cadastro:
+            router.push('/');
         } catch (error) {
             alert(
                 "Erro ao cadastrar usuário. " + error?.response?.data?.erro
