@@ -37,9 +37,7 @@ input {
 }
 
 .desktop {
-  @media screen and (min-width: $desktopBreakpoint) {
-    display: block;
-  }
+  display: block;
 
   @media screen and (max-width: calc($desktopBreakpoint - 1px)) {
     display: none;
@@ -47,12 +45,10 @@ input {
 }
 
 .mobile {
+  display: block;
+
   @media screen and (min-width: $desktopBreakpoint) {
     display: none;
-  }
-
-  @media screen and (max-width: calc($desktopBreakpoint - 1px)) {
-    display: block;
   }
 }
 
