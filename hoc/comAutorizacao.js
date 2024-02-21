@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import UsuarioService from "@/services/UsuarioService"
-import Header from "@/componentes/layout/Header";
+import Cabecalho from "@/componentes/layout/Cabecalho";
 
 const usuarioService = new UsuarioService();
 
@@ -16,7 +16,7 @@ export default function comAutorizacao(Componente) {
 
             return (
                 <>
-                    <Header />
+                    <Cabecalho />
                     <Componente {...props}/>
                 </>
             )
