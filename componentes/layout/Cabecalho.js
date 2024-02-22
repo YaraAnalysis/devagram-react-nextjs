@@ -11,7 +11,7 @@ export default function Cabecalho() {
                     <Image
                         src={logoHorizontalImg}                  
                         alt='logo devagram'
-                        layout='fill'
+                        // layout='fill'
                     />
                 </div>
 
@@ -20,7 +20,7 @@ export default function Cabecalho() {
                         <Image 
                             src={imagemLupa}
                             alt='Icone lupa'
-                            layout='fill'
+                            // layout='fill'
                         />
                     </div>
 
