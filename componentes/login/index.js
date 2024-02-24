@@ -3,8 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import InputPublico from "../inputPublico";
 import Botao from "../botao";
-import { validarEmail, validarSenha } from "@/utils/validadores";
-import UsuarioService from "@/services/UsuarioService";
+import { validarEmail, validarSenha } from "../../utils/validadores";
+import UsuarioService from "../../services/UsuarioService";
 
 import imagemEnvelope from "../../public/images/envelope.svg";
 import imagemChave from "../../public/images/chave.svg";

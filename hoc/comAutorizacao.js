@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
-import UsuarioService from "@/services/UsuarioService"
-import Cabecalho from "@/componentes/layout/Cabecalho";
+import UsuarioService from "../services/UsuarioService";
+import Cabecalho from "../componentes/layout/Cabecalho";
 
 const usuarioService = new UsuarioService();
 

@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { useState } from 'react';
 import logoHorizontalImg from '../../public/images/logoHorizontal.svg';
 import imagemLupa from '../../public/images/lupa.svg';
 import Navegacao from './Navegacao';
@@ -11,7 +12,7 @@ export default function Cabecalho() {
                     <Image
                         src={logoHorizontalImg}                  
                         alt='logo devagram'
-                        // layout='fill'
+                        layout='fill'
                     />
                 </div>
 
@@ -20,7 +21,7 @@ export default function Cabecalho() {
                         <Image 
                             src={imagemLupa}
                             alt='Icone lupa'
-                            // layout='fill'
+                            layout='fill'
                         />
                     </div>
 
