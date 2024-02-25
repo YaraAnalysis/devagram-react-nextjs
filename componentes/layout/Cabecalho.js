@@ -39,7 +39,7 @@ export default function Cabecalho() {
         ])
     }
 
-    const aoClicarResultadoPesquisa = () => {
+    const aoClicarResultadoPesquisa = (id) => {
         console.log('aoClicarResultadoPesquisa', {id});
     }
 
