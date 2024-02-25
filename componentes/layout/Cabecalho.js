@@ -6,7 +6,7 @@ import Navegacao from './Navegacao';
 
 export default function Cabecalho() {
     return (
-        <header className='cabealhoPrincipal'>
+        <header className='cabecalhoPrincipal'>
             <div className='conteudoCabecalhoPrincipal'>
                 <div className='logoCabecalhoPrincipal'>
                     <Image
@@ -30,12 +30,11 @@ export default function Cabecalho() {
                         placeholder='Pesquisar'
                         value={''}
                         onChange={() => consolelog('pesquisando')}
-                        />
+                    />
                 </div>
 
                 <Navegacao className='desktop' />
             </div>
-
         </header>
     );
 }

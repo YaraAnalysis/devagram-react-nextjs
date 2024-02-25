@@ -3,7 +3,6 @@ import HttpService from "./HttpService";
 export default class UsuarioService extends HttpService {
     async login(credenciais) {
         const  { data } = await this.post('/login', credenciais);
-        console.log(data);  // apagar esse console.log
 
         localStorage.setItem("nome", data.nome);
         localStorage.setItem("email", data.email);

@@ -36,7 +36,6 @@ export default function Navegacao({ className }) {
                         height={20}
                     />
                 </li>
-
             </ul>
         </nav>
     );
