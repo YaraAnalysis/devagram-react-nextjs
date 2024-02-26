@@ -5,24 +5,25 @@ import imagemLupa from '../../public/images/lupa.svg';
 import Navegacao from './Navegacao';
 import ResultadoPesquisa from './ResultadoPesquisa';
 import UsuarioService from '../../services/UsuarioService';
+import { useRouter } from 'next/router';
 
 const usuarioService = new UsuarioService();
 
 export default function Cabecalho() {
     const [resultadoPesquisa, setResultadoPesquisa] = useState([]);
     const [termoPesquisado, setTermoPesquisado] = useState('');
+    const router = useRouter();
 
     const aoPesquisar = async (e) =>{
         setTermoPesquisado(e.target.value);
         setResultadoPesquisa([]);
 
-        if (termoPesquisado.length < 3) {
+        if (termoPesquisado.length < 2) {
             return;
         }
 
         try {
             const { data } = await usuarioService.pesquisar(termoPesquisado);
-            console.log(data);
             setResultadoPesquisa(data);
         } catch (error) {
             alert('Erro ao pesquisar usuário. ' + error?.response?.data?.erro);
@@ -31,9 +32,11 @@ export default function Cabecalho() {
         }
     }
 
-
     const aoClicarResultadoPesquisa = (id) => {
         console.log('aoClicarResultadoPesquisa', {id});
+        setResultadoPesquisa([]);
+        setTermoPesquisado('');
+        router.push(`/perfil/${id}`);
     }
 
     return (
