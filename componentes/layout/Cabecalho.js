@@ -27,16 +27,17 @@ export default function Cabecalho() {
             setResultadoPesquisa(data);
         } catch (error) {
             alert('Erro ao pesquisar usuário. ' + error?.response?.data?.erro);
-            //alert('Erro ao pesquisar usuario. ' + e?.response?.data?.erro);
-
         }
     }
 
     const aoClicarResultadoPesquisa = (id) => {
-        console.log('aoClicarResultadoPesquisa', {id});
         setResultadoPesquisa([]);
         setTermoPesquisado('');
         router.push(`/perfil/${id}`);
+    }
+
+    const redirecionarParaHome = () => {
+        router.push('/');
     }
 
     return (
@@ -44,6 +45,7 @@ export default function Cabecalho() {
             <div className='conteudoCabecalhoPrincipal'>
                 <div className='logoCabecalhoPrincipal'>
                     <Image
+                        onClick={redirecionarParaHome}
                         src={logoHorizontalImg}                  
                         alt='logo devagram'
                         layout='fill'
