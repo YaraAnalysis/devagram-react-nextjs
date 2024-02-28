@@ -27,7 +27,7 @@ export function Feed({ usuarioLogado }) {
                         mensagem: 'Imagem muito bacana!'
                     },
                     {
-                        nome: 'Fulanoda esquina',
+                        nome: 'Fulano da esquina',
                         mensagem: 'Isso aí! Continue assim...!'
                     }
                 ]
@@ -53,7 +53,7 @@ export function Feed({ usuarioLogado }) {
     }, [usuarioLogado]);
     
     return (
-        <div className="feedContainer">
+        <div className="feedContainer largura30pctDesktop">
             {listaDePostagens.map(dadosPostagem => (
                 <Postagem key={dadosPostagem.id} {...dadosPostagem} />
             ))}

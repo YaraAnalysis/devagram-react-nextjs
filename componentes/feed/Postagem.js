@@ -15,7 +15,7 @@ export default function Postagem({
 }) {
     
     return (
-        <div>
+        <div className="postagem">
             <Link href={`/perfil/${usuario.id}`}>
                 <section className="cabecalhoPostagem">
                     <Avatar src={usuario.avatar} />
@@ -56,16 +56,15 @@ export default function Postagem({
                         {descricao}
                     </p>
                 </div>
-            </div>
 
-            <div className="comentariosDaPublicacao">
-                {comentarios.map((comentario, i) => (
-                    <div className="comentario" key={i}>
-                        <strong className="nomeUsuario">{comentario.nome}</strong>
-                        <p className="descricao">{comentario.mensagem}</p>
-                    </div>
-
-                ))}
+                <div className="comentariosDaPublicacao">
+                    {comentarios.map((comentario, i) => (
+                        <div className="comentario" key={i}>
+                            <strong className="nomeUsuario">{comentario.nome}</strong>
+                            <p className="descricao">{comentario.mensagem}</p>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     );
