@@ -15,7 +15,7 @@ export function Feed({ usuarioLogado }) {
                     avatar: null,
                 },
                 fotoDoPost: 'https://img.freepik.com/fotos-gratis/aguia-careca-majestosa-empoleirada-olhando-fixamente-com-olhos-afiados-gerados-por-ia_188544-35430.jpg',
-                descricao: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make',
+                descricao: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make.',
                 curtidas: [],
                 comentarios: [
                     {
@@ -40,7 +40,7 @@ export function Feed({ usuarioLogado }) {
                     avatar: null,
                 },
                 fotoDoPost: 'https://s1.static.brasilescola.uol.com.br/be/conteudo/images/imagem-em-lente-convexa.jpg',
-                descricao: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...',
+                descricao: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur.',
                 curtidas: [],
                 comentarios: [
                     {

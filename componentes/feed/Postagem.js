@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Link from "next/link";
 import Avatar from "../avatar";
 import Image from "next/image";
@@ -7,12 +8,34 @@ import imgCurtido from '../../public/images/curtido.svg';
 import imgComentarioAtivo from '../../public/images/comentarioAtivo.svg';
 import imgComentarioCinza from '../../public/images/comentarioCinza.svg';
 
+const tamanhoLimiteDescricao = 90;
+
 export default function Postagem({
     usuario,
     fotoDoPost,
     descricao,
     comentarios
 }) {
+    const [tamanhoAtualDaDescricao, setTamanhoAtualDaDescricao] = useState(
+        tamanhoLimiteDescricao
+    );
+
+    const exibirDescricaoCompleta = () => {
+        setTamanhoAtualDaDescricao(Number.MAX_SAFE_INTEGER);
+    }
+
+    const descricaoMaiorQueLimite = () => {
+        return descricao.length > tamanhoAtualDaDescricao;
+    }
+
+    const obterDescricao = () => {
+        let mensagem = descricao.substring(0, tamanhoAtualDaDescricao);
+        if(descricaoMaiorQueLimite()) {
+            mensagem += '...';
+        }
+
+        return mensagem;
+    }
     
     return (
         <div className="postagem">
@@ -53,7 +76,14 @@ export default function Postagem({
                 <div className="descricaoDaPostagem">
                     <strong className="nomeUsuario">{usuario.nome}</strong>
                     <p className="descricao">
-                        {descricao}
+                        {obterDescricao()}
+                        {descricaoMaiorQueLimite() && (
+                            <span 
+                                onClick={exibirDescricaoCompleta}
+                                className="exibirDescricaoCompleta">
+                                mais
+                            </span>
+                        )}
                     </p>
                 </div>
 
