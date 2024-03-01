@@ -7,6 +7,7 @@ import imgCurtir from '../../public/images/curtir.svg';
 import imgCurtido from '../../public/images/curtido.svg';
 import imgComentarioAtivo from '../../public/images/comentarioAtivo.svg';
 import imgComentarioCinza from '../../public/images/comentarioCinza.svg';
+import FazerComentario from "./FazerComentario";
 
 const tamanhoLimiteDescricao = 90;
 
@@ -14,8 +15,10 @@ export default function Postagem({
     usuario,
     fotoDoPost,
     descricao,
-    comentarios
+    comentarios,
+    usuarioLogado
 }) {
+    const [deveExibirSecaoParaComentar, setDeveExibirSecaoParaComentar] = useState(false);
     const [tamanhoAtualDaDescricao, setTamanhoAtualDaDescricao] = useState(
         tamanhoLimiteDescricao
     );
@@ -65,7 +68,7 @@ export default function Postagem({
                         alt='icone comentar'
                         width={20}
                         height={20}
-                        onClick={() => console.log('comentar')}
+                        onClick={() => setDeveExibirSecaoParaComentar(!deveExibirSecaoParaComentar)}
                     />
 
                     <span className="quantidadeCurtidas">
@@ -96,6 +99,10 @@ export default function Postagem({
                     ))}
                 </div>
             </div>
+
+            {deveExibirSecaoParaComentar &&
+                <FazerComentario usuarioLogado={usuarioLogado}/>
+            }
         </div>
     );
 }
