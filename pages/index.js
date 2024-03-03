@@ -21,5 +21,5 @@ export default function Index() {
     return <Home />;
   }
 
-  return <Login aposAutenticacao={() => setEstaAutenticado(true)}/>;
+  return <Login aposAutenticacao={() => setEstaAutenticado(true)} />;
 }
