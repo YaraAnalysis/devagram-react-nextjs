@@ -10,7 +10,6 @@ export function Feed({ usuarioLogado }) {
     useEffect( () => {
         const fetchData = async () => {
             const { data } = await feedService.carregarPostagens();
-            console.log(data);
 
             const postagensFormatadas = data.map((postagem) => (
                 {
