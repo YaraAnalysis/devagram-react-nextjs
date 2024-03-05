@@ -39,6 +39,12 @@ export default function Postagem({
 
         return mensagem;
     }
+
+    const obterImagemComentario = () => {
+        return deveExibirSecaoParaComentar
+            ? imgComentarioAtivo
+            : imgComentarioCinza;
+    }
     
     return (
         <div className="postagem">
@@ -64,7 +70,7 @@ export default function Postagem({
                     />
 
                     <Image
-                        src={imgComentarioCinza}
+                        src={obterImagemComentario()}
                         alt='icone comentar'
                         width={20}
                         height={20}
