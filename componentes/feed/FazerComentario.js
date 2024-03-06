@@ -13,11 +13,11 @@ export default function FazerComentario({ usuarioLogado, comentar }) {
 
     const aoPressionarQualquerTecla = (e) => {
         if (e.key === 'Enter') {
-            manipularComentario();
+            fazerComentario();
         }
     }
 
-    const manipularComentario = () => {
+    const fazerComentario = () => {
         if (comentario.trim().length === 0 || !comentar) {
             return;
         }
@@ -39,6 +39,7 @@ export default function FazerComentario({ usuarioLogado, comentar }) {
             <button
                 type="button"
                 className="btnPublicacao desktop"
+                onClick={fazerComentario}
             >
                 Publicar
             </button>
