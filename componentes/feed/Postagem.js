@@ -8,16 +8,20 @@ import imgCurtido from '../../public/images/curtido.svg';
 import imgComentarioAtivo from '../../public/images/comentarioAtivo.svg';
 import imgComentarioCinza from '../../public/images/comentarioCinza.svg';
 import FazerComentario from "./FazerComentario";
+import FeedService from "../../services/FeedService";
 
 const tamanhoLimiteDescricao = 90;
+const feedService = new FeedService();
 
 export default function Postagem({
+    id,
     usuario,
     fotoDoPost,
     descricao,
     comentarios,
     usuarioLogado
 }) {
+    const [comentariosPostagem, setComentariosPostagem] = useState(comentarios);
     const [deveExibirSecaoParaComentar, setDeveExibirSecaoParaComentar] = useState(false);
     const [tamanhoAtualDaDescricao, setTamanhoAtualDaDescricao] = useState(
         tamanhoLimiteDescricao
@@ -47,15 +51,19 @@ export default function Postagem({
     }
 
     const comentar = async (comentario) => {
-        console.log('fazer comentário');
-        
         try {
-            
+            await feedService.adicionarComentario(id, comentario);
+            setDeveExibirSecaoParaComentar(false);
+            setComentariosPostagem([
+                ...comentariosPostagem,
+                {
+                    nome: usuarioLogado.nome,
+                    mensagem: comentario
+                }
+            ]);
         } catch (e) {
-            
+            alert(`Erro ao fazer comentário! ` + (e?.response?.data?.erro || ''));
         }
-        
-        return Promise.resolve(true);
     }
     
     return (
@@ -109,7 +117,7 @@ export default function Postagem({
                 </div>
 
                 <div className="comentariosDaPublicacao">
-                    {comentarios.map((comentario, i) => (
+                    {comentariosPostagem.map((comentario, i) => (
                         <div className="comentario" key={i}>
                             <strong className="nomeUsuario">{comentario.nome}</strong>
                             <p className="descricao">{comentario.mensagem}</p>

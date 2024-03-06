@@ -6,7 +6,7 @@ export default function FazerComentario({ usuarioLogado, comentar }) {
     const [comentario, setComentario] = useState('');
 
     const aoDigitarComentario = (e) => {
-        const valorInput = e.target.value.trim();
+        const valorInput = e.target.value;
         setComentario(valorInput);
         setLinhas(valorInput.length > 0 ? 2 : 1);
     }
@@ -17,17 +17,12 @@ export default function FazerComentario({ usuarioLogado, comentar }) {
         }
     }
 
-    const manipularComentario = async () => {
+    const manipularComentario = () => {
         if (comentario.trim().length === 0 || !comentar) {
             return;
         }
 
-        const sucessoAoComentar = await comentar(comentario);
-        console.log({sucessoAoComentar});
-        if (sucessoAoComentar) {
-            setComentario('');
-            setLinhas(1);
-        }
+       comentar(comentario);
     }
 
     return (
