@@ -45,6 +45,18 @@ export default function Postagem({
             ? imgComentarioAtivo
             : imgComentarioCinza;
     }
+
+    const comentar = async (comentario) => {
+        console.log('fazer comentário');
+        
+        try {
+            
+        } catch (e) {
+            
+        }
+        
+        return Promise.resolve(true);
+    }
     
     return (
         <div className="postagem">
@@ -107,7 +119,7 @@ export default function Postagem({
             </div>
 
             {deveExibirSecaoParaComentar &&
-                <FazerComentario usuarioLogado={usuarioLogado}/>
+                <FazerComentario comentar={comentar} usuarioLogado={usuarioLogado}/>
             }
         </div>
     );
