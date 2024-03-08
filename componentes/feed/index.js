@@ -3,8 +3,8 @@ import FeedService from "../../services/FeedService";
 import Postagem from "./Postagem";
 
 const feedService = new FeedService();
-
-export function Feed({ usuarioLogado }) {
+ 
+export default function Feed({ usuarioLogado }) {
     const [listaDePostagens, setListaDePostagens] = useState([]);
 
     useEffect( () => {
@@ -15,7 +15,7 @@ export function Feed({ usuarioLogado }) {
                 {
                     id:postagem._id,
                     usuario: {
-                        id: postagem.userId,
+                        id: postagem.idUsuario,
                         nome: postagem.usuario.nome,
                         avatar: postagem.usuario.avatar
                     },
