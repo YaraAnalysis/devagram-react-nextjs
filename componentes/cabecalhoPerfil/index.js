@@ -7,7 +7,7 @@ export default function CabecalhoPerfil({
     usuario
 }) {
     return (
-        <div>
+        <div className='cabecalhoPerfil largura30pctDesktop'>
             <CabecalhoComAcoes 
                 iconeEsquerda={imgSetaEsquerda}
                 titulo={usuario.nome}
