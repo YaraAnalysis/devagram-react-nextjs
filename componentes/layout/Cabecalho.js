@@ -23,7 +23,7 @@ export default function Cabecalho() {
         setTermoPesquisado(e.target.value);
         setResultadoPesquisa([]);
 
-        if (e.target.value.length < 2) {
+        if (e.target.value.length < 3) {
             return;
         }
 
